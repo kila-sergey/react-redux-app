@@ -1,0 +1,30 @@
+.user-list{
+	margin: 20px 0;
+}
+
+.user{
+	display: flex;
+	align-items: center;
+	padding: 10px 15px;
+	&:hover{
+		cursor: pointer;
+		box-shadow: 0 0 8px 0 rgba(0,0,0,.3);
+	}
+}
+
+.user-name{
+	display: inline-block;
+	margin-right: 5px;
+}
+.user-photo{
+	margin-right: 10px;
+	width:150px;
+	height: 150px;
+}
+.user-info{
+	display: flex;
+	flex-direction: column;
+}
+.user-nick{
+	margin-bottom: 5px;
+}

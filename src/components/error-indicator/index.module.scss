@@ -1,0 +1,50 @@
+
+.error {
+	padding:20px 0;
+	text-align: center;
+	margin: 0 auto;
+	width: 320px;
+	-webkit-animation: error 1s ease-in-out infinite both;
+	        animation: error 1s ease-in-out infinite both;
+}
+.text{
+	margin-bottom: 10px;
+	text-align: center;
+}
+.icon{
+	width: 70px;
+	height: 70px;
+}
+@-webkit-keyframes error {
+	0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	50% {
+		-webkit-transform: scale(0.9);
+		transform: scale(0.9);
+	}
+
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+
+@keyframes error {
+	0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	50% {
+		-webkit-transform: scale(0.9);
+		transform: scale(0.9);
+	}
+
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
