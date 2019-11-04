@@ -16,7 +16,7 @@ const App = ({testService}) => {
 				<AppHeader/>
 				<Switch>
 					<Route path="/" component={HomePage} exact/>
-					<Route path='/user' component={UserPage}/>
+					<Route path='/users' component={UserPage}/>
 				</Switch>
 			</div>
 		</main>

@@ -9,7 +9,7 @@ const updateUsersList = (state,action) =>{
 	switch(action.type){
 		case 'FETCH_USERS_REQUEST':
 			return {
-				users:state.users,
+				users:[],
 				loading:true,
 				error:false
 			}

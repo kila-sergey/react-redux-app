@@ -1,3 +1,7 @@
+.header{
+	display: flex;
+	justify-content: space-between;
+}
 .logo {
 	display: inline-block;
 	-webkit-animation: rotate-center 3.5s linear infinite both;

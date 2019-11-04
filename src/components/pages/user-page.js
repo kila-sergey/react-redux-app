@@ -1,10 +1,9 @@
 import React from 'react';
+import UsersList from '../users-list';
 
 const UserPage=()=>{
 	return(
-		<div>
-			UserPage
-		</div>
+		<UsersList/>
 	)
 }
 

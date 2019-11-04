@@ -3,30 +3,40 @@ import styles from './styles.module.scss';
 
 import withService from '../hoc/';
 import { connect } from 'react-redux';
-import { fetchUsersSuccess } from '../../actions/'
+import { usersLoaded, usersRequested, usersError, fetchUsers } from '../../actions/'
 
 import UsersListItem from './users-list-item';
+import Spinner from '../spinner';
+import ErrorIndicator from '../error-indicator/'
 
 class UsersList extends Component {
 
 	componentDidMount() {
-		const { testService, usersLoaded } = this.props;
+		const { fetchUsers } = this.props;
 
-		testService.getAllUsers()
-			.then(users => {
-				usersLoaded(users);
-			})
+		fetchUsers()
 
 	}
 
 	render() {
-		const { users } = this.props;
+		const { users, loading, error } = this.props;
 
 		const userList = users.map(user => {
 			return (
-				<UsersListItem user={user} key={user.id}/>
+				<UsersListItem user={user} key={user.id} />
 			)
 		})
+
+		if (loading) {
+			return (
+				<Spinner />
+			)
+		}
+		if (error) {
+			return (
+				<ErrorIndicator />
+			)
+		}
 		return (
 			<ul className={styles.userList}>
 				{userList}
@@ -38,15 +48,17 @@ class UsersList extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		users: state.usersList.users
+		users: state.usersList.users,
+		loading: state.usersList.loading,
+		error: state.usersList.error
 	}
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
+	const { testService } = ownProps;
 	return {
-		usersLoaded: (users) => {
-			dispatch(fetchUsersSuccess(users))
-		}
+		fetchUsers: fetchUsers(dispatch, testService)
 	}
 }
+
 export default withService()(connect(mapStateToProps, mapDispatchToProps)(UsersList));
