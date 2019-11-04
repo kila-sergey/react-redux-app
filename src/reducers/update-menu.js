@@ -1,7 +1,7 @@
 const updateMenu = (state,action)=>{
 	if(state===undefined){
 		return {
-			isOpened:false
+			isOpened:true
 		}
 	}
 	switch(action.type){
