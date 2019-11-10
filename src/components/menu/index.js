@@ -1,3 +1,7 @@
 import Hamburger from './hamburger';
+import Menu from './menu';
 
-export default Hamburger;
+export {
+	Hamburger,
+	Menu
+};

@@ -3,7 +3,9 @@ import UsersList from '../users-list';
 
 const UserPage=()=>{
 	return(
-		<UsersList/>
+		<div className="container">
+			<UsersList/>
+		</div>
 	)
 }
 

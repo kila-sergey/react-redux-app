@@ -12,13 +12,11 @@ import AppHeader from '../app-header/';
 const App = ({testService}) => {
 	return (
 		<main className="app">
-			<div className="container">
-				<AppHeader/>
-				<Switch>
-					<Route path="/" component={HomePage} exact/>
-					<Route path='/users' component={UserPage}/>
-				</Switch>
-			</div>
+			<AppHeader/>
+			<Switch>
+				<Route path="/" component={HomePage} exact/>
+				<Route path='/users' component={UserPage}/>
+			</Switch>
 		</main>
 	)
 }

@@ -17,11 +17,6 @@ const usersError = () => {
 	}
 }
 
-const menuClick=()=>{
-	return{
-		type:'MENU_CLICK'
-	}
-}
 const fetchUsers = (dispatch,service) => () =>{
 	dispatch(usersRequested());
 		service.getAllUsers()
@@ -39,6 +34,5 @@ export {
 	usersRequested,
 	usersLoaded,
 	usersError,
-	menuClick,
 	fetchUsers
 }

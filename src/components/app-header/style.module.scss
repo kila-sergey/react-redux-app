@@ -1,8 +1,17 @@
 .header{
+	padding: 10px 0;
+	position: relative;
+	
+	border-bottom: 1px solid #e6e6e6;
+}
+.header-wrap{
 	display: flex;
+	align-items: center;
 	justify-content: space-between;
 }
 .logo {
+	position: relative;
+	z-index: 15;
 	display: inline-block;
 	-webkit-animation: rotate-center 3.5s linear infinite both;
 	animation: rotate-center 3.5s linear infinite both;
