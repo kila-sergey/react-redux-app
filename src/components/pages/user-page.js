@@ -1,10 +1,9 @@
 import React from 'react';
-import UsersList from '../users-list';
 
-const UserPage=()=>{
+const UserPage = () =>{
 	return(
 		<div className="container">
-			<UsersList/>
+			UserPage
 		</div>
 	)
 }

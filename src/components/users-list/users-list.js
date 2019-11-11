@@ -19,11 +19,10 @@ class UsersList extends Component {
 	}
 
 	render() {
-		const { users, loading, error } = this.props;
-
+		const { users, loading, error, onUserSelected } = this.props;
 		const userList = users.map(user => {
 			return (
-				<UsersListItem user={user} key={user.id} />
+				<UsersListItem user={user} key={user.id} onUserSelected={onUserSelected}/>
 			)
 		})
 

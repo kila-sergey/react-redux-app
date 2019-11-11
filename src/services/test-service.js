@@ -10,10 +10,14 @@ export default class TestService {
 		return response.json()
 	}
 
-	getAllUsers = async (url) => {
+	getAllUsers = async () => {
 		const response = await this.getResourse('/users/')
 		return response;
 	}
 
+	getUser = async (id) =>{
+		const response = await this.getResourse(`/users/${id}`);
+		return response
+	}
 }
 
