@@ -11,8 +11,6 @@ import AppHeader from '../app-header/';
 
 
 const App = ({ testService }) => {
-	testService.getUser(2)
-		.then(user => console.log(user))
 	return (
 		<main className="app">
 			<AppHeader />
