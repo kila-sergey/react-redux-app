@@ -6,7 +6,10 @@ import  {
 } from './user-list'
 
 import {
-	userIdRequested
+	userIdRequested,
+	userRequested,
+	userLoaded,
+	userError
 } from './user-info'
 
 export {
@@ -14,5 +17,9 @@ export {
 	usersLoaded,
 	usersError,
 	fetchUsers,
-	userIdRequested
+	
+	userIdRequested,
+	userRequested,
+	userLoaded,
+	userError
 }

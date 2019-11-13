@@ -1,21 +1,40 @@
-const updateActiveUser = (state, action) => {
-	if (state === undefined) {
-		return {
-			user: {},
-			activeUserId: null
-		}
-	}
+const initialState = {
+	user: {},
+	userId: null,
+	loading: true
+}
 
+const updateActiveUser = (state=initialState, action) => {
 	switch (action.type) {
 		case 'UPDATE_USER_ID':
 			return {
-				user: state.user,
-				activeUserId: action.payload
+				user: {},
+				userId: action.payload,
+				loading: true
+			}
+		case 'FETCH_USER_REQUEST':
+			return {
+				user: {},
+				userId: state.userId,
+				loading: true,
+			}
+		case 'FETCH_USER_SUCCESS':
+			return {
+				user: action.payload,
+				userId: state.userId,
+				loading: false,
+			}
+		case 'FETCH_USER_ERROR':
+			return {
+				user: {},
+				userId: state.userId,
+				loading: false,
 			}
 		default:
 			return {
 				user: state.user,
-				activeUserId: state.activeUserId
+				userId: state.userId,
+				loading: true
 			}
 	}
 }

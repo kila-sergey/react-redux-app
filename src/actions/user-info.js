@@ -5,6 +5,28 @@ const userIdRequested=(id)=>{
 	}
 }
 
+const userRequested = () => {
+	return {
+		type: 'FETCH_USER_REQUEST'
+	}
+}
+
+const userLoaded = (user) => {
+	return {
+		type: 'FETCH_USER_SUCCESS',
+		payload: user
+	}
+}
+
+const userError = () => {
+	return {
+		type:'FETCH_USER_ERROR'
+	}
+}
+
 export {
-	userIdRequested
+	userIdRequested,
+	userRequested,
+	userLoaded,
+	userError
 }
