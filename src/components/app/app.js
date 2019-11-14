@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Route, Switch } from 'react-router-dom';
-import './app.scss';
+import  './app.scss';
 
 import withService from '../hoc/';
 import HomePage from '../pages/home-page';
@@ -12,7 +12,7 @@ import AppHeader from '../app-header/';
 
 const App = ({ testService }) => {
 	return (
-		<main className="app">
+		<main className='app'>
 			<AppHeader />
 			<Switch>
 				<Route path="/" component={HomePage} exact />
