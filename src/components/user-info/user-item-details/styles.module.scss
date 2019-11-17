@@ -1,0 +1,16 @@
+.user-details-item{
+	padding-left: 30px;
+	display: flex;
+	align-items: center;
+	font-size: 15px;
+	margin-bottom: 10px;
+	&__parameter{
+		font-weight: 400;
+		padding-right: 5px;
+		min-width: 105px;
+		text-transform: uppercase;
+	}
+	&__value{
+		font-weight: 300;
+	}
+}
