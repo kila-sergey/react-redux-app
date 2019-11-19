@@ -3,14 +3,21 @@ import  {
 	usersLoaded,
 	usersError,
 	fetchUsers
-} from './user-list'
+} from './user-list';
 
 import {
 	userIdRequested,
 	userRequested,
 	userLoaded,
 	userError
-} from './user-info'
+} from './user-info';
+
+
+import {
+	userAlbumsRequested,
+	userAlbumsLoaded,
+	userAlbumsError
+} from './user-albums';
 
 export {
 	usersRequested,
@@ -21,5 +28,9 @@ export {
 	userIdRequested,
 	userRequested,
 	userLoaded,
-	userError
+	userError,
+
+	userAlbumsRequested,
+	userAlbumsLoaded,
+	userAlbumsError
 }

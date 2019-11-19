@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {userIdRequested} from '../../actions';
 
 import UserInfo from '../user-info';
+import UserAlbums from '../user-albums';
 
 class UserPage extends Component{
 	
@@ -15,6 +16,7 @@ class UserPage extends Component{
 		return(
 			<div className="container">
 				<UserInfo/>
+				<UserAlbums/>
 			</div>
 		)
 	}

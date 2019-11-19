@@ -64,27 +64,11 @@ class UserInfo extends Component {
 					<div className={styles.name}>{user.name}</div>
 					<UserItem parameter='user-name' value={user.username} />
 					<UserItem parameter='email' value={user.email} />
-					<UserItem parameter='address' value={user.address.city} hasDetails={true} detailsToggleFunc={this.addressDetailsToggle} />
-					<Transition
-						in={addressDetails}
-						timeout={{
-							enter: 100,
-							exit: 400,
-						}}
-						unmountOnExit={true}
-						mountOnEnter={true}>
-						{
-							(state) => (
-								(
-									<div className={`user-details-box user-details-box-${state}`}>
-										<UserItemDetails parameter='street' value={user.address.street} />
-										<UserItemDetails parameter='suite' value={user.address.suite} />
-										<UserItemDetails parameter='zipcode:' value={user.address.zipcode} />
-									</div>
-								)
-							)
-						}
-					</Transition>
+					<UserItem parameter='address' value={user.address.city} hasDetails={true}>
+						<UserItemDetails parameter='street' value={user.address.street} />
+						<UserItemDetails parameter='suite' value={user.address.suite} />
+						<UserItemDetails parameter='zipcode:' value={user.address.zipcode} />
+					</UserItem>
 					<UserItem parameter='phone' value={user.phone} />
 					<UserItem parameter='website' value={user.website} />
 					<UserItem parameter='company' value={user.company.name} hasDetails={true} detailsToggleFunc={this.companyDetailsToggle} />

@@ -2,45 +2,48 @@ const initialState = {
 	user: {},
 	userId: null,
 	loading: true,
-	error:false
+	error:false,
+	albums:{}
 }
 
 const updateActiveUser = (state=initialState, action) => {
 	switch (action.type) {
 		case 'UPDATE_USER_ID':
 			return {
-				user: {},
+				...state,
 				userId: action.payload,
-				loading: true,
-				error:false
 			}
 		case 'FETCH_USER_REQUEST':
 			return {
-				user: {},
-				userId: state.userId,
+				...state,
 				loading: true,
 				error:false
 			}
 		case 'FETCH_USER_SUCCESS':
 			return {
+				...state,
 				user: action.payload,
-				userId: state.userId,
 				loading: false,
 				error:false
 			}
 		case 'FETCH_USER_ERROR':
 			return {
-				user: {},
-				userId: state.userId,
+				...state,
 				loading: false,
 				error:true
+			}
+		case 'FETCH_USER_ALBUMS_SUCCESS':
+			return{
+				...state,
+				albums:action.payload
 			}
 		default:
 			return {
 				user: state.user,
 				userId: state.userId,
 				loading: true,
-				error:false
+				error:false,
+				albums:state.albums
 			}
 	}
 }
