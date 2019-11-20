@@ -3,7 +3,7 @@ const initialState = {
 	userId: null,
 	loading: true,
 	error:false,
-	albums:{}
+	albums:[]
 }
 
 const updateActiveUser = (state=initialState, action) => {

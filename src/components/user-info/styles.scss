@@ -1,4 +1,8 @@
 .user-details-box{
+	min-width: 100%;;
+	position: absolute;
+	top: 5px;
+	left: 105%;
 	transition: all .5s ease-out;
 	transform-origin: top;
 	&-entering{
@@ -12,7 +16,6 @@
 		transform: scaleY(0);
 	}
 	&-exited{
-
 		transform: scaleY(0);
 	}
 }

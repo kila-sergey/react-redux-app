@@ -1,4 +1,5 @@
 .user-item{
+	position: relative;
 	display: flex;
 	align-items: center;
 	&:not(:last-of-type){

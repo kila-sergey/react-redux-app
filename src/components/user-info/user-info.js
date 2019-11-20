@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Transition } from 'react-transition-group';
 import withService from '../hoc';
 import { connect } from 'react-redux';
 import {
@@ -16,23 +15,7 @@ import './styles.scss';
 
 
 class UserInfo extends Component {
-	state = {
-		addressDetails: false,
-		companyDetails: false,
-	}
-
-	addressDetailsToggle = () => {
-		this.setState({
-			addressDetails: !this.state.addressDetails
-		})
-	}
-
-	companyDetailsToggle = () => {
-		this.setState({
-			companyDetails: !this.state.companyDetails
-		})
-	}
-
+	
 	componentDidUpdate(prevProps) {
 		const { testService, userId, onUserLoaded, onUserRequested, onUserError } = this.props;
 		if (prevProps.userId !== userId) {
@@ -49,13 +32,11 @@ class UserInfo extends Component {
 
 	render() {
 		const { error, loading, user } = this.props;
-		const { addressDetails, companyDetails } = this.state;
-		console.log(user)
 		if (loading) {
 			return <Spinner />
 		}
-		if(error){
-			return <ErrorIndicator/>
+		if (error) {
+			return <ErrorIndicator />
 		}
 		return (
 			<div className={styles.userBox}>
@@ -71,26 +52,10 @@ class UserInfo extends Component {
 					</UserItem>
 					<UserItem parameter='phone' value={user.phone} />
 					<UserItem parameter='website' value={user.website} />
-					<UserItem parameter='company' value={user.company.name} hasDetails={true} detailsToggleFunc={this.companyDetailsToggle} />
-					<Transition
-						in={companyDetails}
-						timeout={{
-							enter: 100,
-							exit: 500,
-						}}
-						unmountOnExit={true}
-						mountOnEnter={true}>
-						{
-							(state) => (
-								(
-									<div className={`user-details-box user-details-box-${state}`}>
-										<UserItemDetails parameter='business' value={user.company.bs} />
-										<UserItemDetails parameter='tagline' value={user.company.catchPhrase} />
-									</div>
-								)
-							)
-						}
-					</Transition>
+					<UserItem parameter='company' value={user.company.name} hasDetails={true} detailsToggleFunc={this.companyDetailsToggle}>
+						<UserItemDetails parameter='business' value={user.company.bs} />
+						<UserItemDetails parameter='tagline' value={user.company.catchPhrase} />
+					</UserItem>
 				</div>
 			</div>
 		)
