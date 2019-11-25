@@ -16,7 +16,6 @@ const updateActiveUser = (state=initialState, action) => {
 		case 'FETCH_USER_REQUEST':
 			return {
 				...state,
-				loading: true,
 				error:false
 			}
 		case 'FETCH_USER_SUCCESS':

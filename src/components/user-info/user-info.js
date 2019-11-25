@@ -5,7 +5,7 @@ import {
 	userRequested,
 	userLoaded,
 	userError
-} from '../../actions'
+} from '../../actions';
 import Spinner from '../spinner/';
 import ErrorIndicator from '../error-indicator/';
 import UserItem from './user-item/';
@@ -16,28 +16,9 @@ import './styles.scss';
 
 class UserInfo extends Component {
 	
-	componentDidUpdate(prevProps) {
-		const { testService, userId, onUserLoaded, onUserRequested, onUserError } = this.props;
-		if (prevProps.userId !== userId) {
-			onUserRequested()
-			testService.getUser(userId)
-				.then(user => {
-					onUserLoaded(user)
-				})
-				.catch(error => {
-					onUserError()
-				})
-		}
-	}
-
 	render() {
-		const { error, loading, user } = this.props;
-		if (loading) {
-			return <Spinner />
-		}
-		if (error) {
-			return <ErrorIndicator />
-		}
+		const { user } = this.props;
+		
 		return (
 			<div className={styles.userBox}>
 				<img src={`../images/avatar-${user.id}.png`} className={styles.userAvatar} />
@@ -45,16 +26,16 @@ class UserInfo extends Component {
 					<div className={styles.name}>{user.name}</div>
 					<UserItem parameter='user-name' value={user.username} />
 					<UserItem parameter='email' value={user.email} />
-					<UserItem parameter='address' value={user.address.city} hasDetails={true}>
-						<UserItemDetails parameter='street' value={user.address.street} />
-						<UserItemDetails parameter='suite' value={user.address.suite} />
-						<UserItemDetails parameter='zipcode:' value={user.address.zipcode} />
+					<UserItem parameter='address' value={user.address && user.address.city}>
+						<UserItemDetails parameter='street' value={user.address && user.address.street} />
+						<UserItemDetails parameter='suite' value={user.address && user.address.suite} />
+						<UserItemDetails parameter='zipcode:' value={user.address && user.address.zipcode} />
 					</UserItem>
 					<UserItem parameter='phone' value={user.phone} />
 					<UserItem parameter='website' value={user.website} />
-					<UserItem parameter='company' value={user.company.name} hasDetails={true} detailsToggleFunc={this.companyDetailsToggle}>
-						<UserItemDetails parameter='business' value={user.company.bs} />
-						<UserItemDetails parameter='tagline' value={user.company.catchPhrase} />
+					<UserItem parameter='company' value={user.company && user.company.name}>
+						<UserItemDetails parameter='business' value={user.company && user.company.bs} />
+						<UserItemDetails parameter='tagline' value={user.company && user.company.catchPhrase} />
 					</UserItem>
 				</div>
 			</div>
@@ -64,19 +45,10 @@ class UserInfo extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		userId: state.activeUser.userId,
 		user: state.activeUser.user,
 		loading: state.activeUser.loading,
 		error: state.activeUser.error
 	}
 }
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		onUserRequested: () => dispatch(userRequested()),
-		onUserLoaded: (user) => dispatch(userLoaded(user)),
-		onUserError: () => dispatch(userError()),
-	}
-}
-
-export default withService()(connect(mapStateToProps, mapDispatchToProps)(UserInfo))
+export default withService()(connect(mapStateToProps, null)(UserInfo))

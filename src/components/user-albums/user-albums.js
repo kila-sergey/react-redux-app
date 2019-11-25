@@ -7,23 +7,13 @@ import {
 } from '../../actions'
 
 import UserAlbum from './user-album';
-
+import Spinner from '../spinner';
 import styles from './styles.module.scss';
 
 
 class UserAlbums extends Component {
 
-	componentDidUpdate(prevProps){
-		const {userId,testService,onAlbumsLoaded}=this.props;
-		if(prevProps.userId!==userId){
-			testService.getUserAlbums(userId)
-				.then(albums=>{
-					onAlbumsLoaded(albums)
-				})
-		}
-	}
 	render() {
-		
 		const {albums} = this.props;
 		return (
 			<ul className={styles.albums}>
@@ -42,13 +32,9 @@ class UserAlbums extends Component {
 
 const mapStatetoProps = (state) => {
 	return {
-		userId:state.activeUser.userId,
 		albums: state.activeUser.albums,
+		loading:state.activeUser.loading
 	}
 }
-const mapDispatchToProps = (dispatch) => {
-	return {
-		onAlbumsLoaded:(albums)=>dispatch(userAlbumsLoaded(albums))
-	}
-}
-export default withService()(connect(mapStatetoProps, mapDispatchToProps)(UserAlbums))
+
+export default withService()(connect(mapStatetoProps, null)(UserAlbums))
