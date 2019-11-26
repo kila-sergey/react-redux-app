@@ -11,14 +11,7 @@ const userAlbumsLoaded = (albums) => {
 	}
 }
 
-const userAlbumsError = () => {
-	return {
-		type:'FETCH_USER_ALBUMS_ERROR'
-	}
-}
-
 export {
 	userAlbumsRequested,
 	userAlbumsLoaded,
-	userAlbumsError
 }

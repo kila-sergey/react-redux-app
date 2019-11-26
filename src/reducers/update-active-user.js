@@ -16,25 +16,28 @@ const updateActiveUser = (state=initialState, action) => {
 		case 'FETCH_USER_REQUEST':
 			return {
 				...state,
-				error:false
+				loading:true
 			}
 		case 'FETCH_USER_SUCCESS':
 			return {
 				...state,
 				user: action.payload,
-				loading: false,
-				error:false
-			}
-		case 'FETCH_USER_ERROR':
-			return {
-				...state,
-				loading: false,
-				error:true
 			}
 		case 'FETCH_USER_ALBUMS_SUCCESS':
 			return{
 				...state,
 				albums:action.payload
+			}
+		case 'USER_PAGE_LOADED':
+			return{
+				...state,
+				loading:false
+			}
+		case 'USER_PAGE_ERROR':
+			return{
+				...state,
+				loading: false,
+				error:true
 			}
 		default:
 			return {

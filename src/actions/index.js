@@ -9,14 +9,14 @@ import {
 	userIdRequested,
 	userRequested,
 	userLoaded,
-	userError
+	userFetchError,
+	userFetchSuccess
 } from './user-info';
 
 
 import {
 	userAlbumsRequested,
 	userAlbumsLoaded,
-	userAlbumsError
 } from './user-albums';
 
 export {
@@ -27,10 +27,10 @@ export {
 	
 	userIdRequested,
 	userRequested,
+	userFetchSuccess,
+	userFetchError,
 	userLoaded,
-	userError,
 
 	userAlbumsRequested,
 	userAlbumsLoaded,
-	userAlbumsError
 }

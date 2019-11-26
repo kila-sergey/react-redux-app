@@ -18,15 +18,21 @@ const userLoaded = (user) => {
 	}
 }
 
-const userError = () => {
+const userFetchError = () => {
 	return {
-		type:'FETCH_USER_ERROR'
+		type:'USER_PAGE_ERROR'
 	}
 }
 
+const userFetchSuccess = () =>{
+	return {
+		type:'USER_PAGE_LOADED'
+	}
+}
 export {
 	userIdRequested,
 	userRequested,
 	userLoaded,
-	userError
+	userFetchError,
+	userFetchSuccess
 }

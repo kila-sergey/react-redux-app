@@ -2,39 +2,51 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {
 	userIdRequested,
-	userRequested,
 	userLoaded,
-	userError,
-	userAlbumsLoaded
+	userFetchError,
+	userAlbumsLoaded,
+	userFetchSuccess
 } from '../../actions';
 
+import Spinner from '../spinner';
 import withService from '../hoc/';
 import UserInfo from '../user-info';
 import UserAlbums from '../user-albums';
 
 class UserPage extends Component{
+
+
 	
 	componentDidMount(){
-		const {userId,updateUserId,testService,  onUserLoaded, onUserRequested, onUserError,onAlbumsLoaded}=this.props;
+		const {userId,updateUserId,testService,onUserFetchSuccess, onUserLoaded, onAlbumsLoaded}=this.props;
 		updateUserId(userId);
 		
-		onUserRequested();
+		const getUserData=()=>{
+			testService.getUser(userId)
+			.then(user => {
+				onUserLoaded(user)
+			})
+		}
+		const getUserAlbums = () =>{
+			testService.getUserAlbums(userId)
+			.then(albums=>{
+				onAlbumsLoaded(albums)
+			})
+		}
 
-		testService.getUser(userId)
-		.then(user => {
-			onUserLoaded(user)
-		})
-		.catch(error => {
-			onUserError()
-		});
+		Promise.all([
+			getUserData(),
+			getUserAlbums()])
+			.then(result=>{
+				onUserFetchSuccess()
+			})
 
-		testService.getUserAlbums(userId)
-		.then(albums=>{
-			onAlbumsLoaded(albums)
-		})
+
+		
 	
 	}
 	render(){
+		const {loading} = this.props;
 		return(
 			<div className="container">
 				<UserInfo/>
@@ -54,10 +66,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps=(dispatch)=>{
 	return{
 		updateUserId:(id)=>dispatch(userIdRequested(id)),
-		onUserRequested: () => dispatch(userRequested()),
 		onUserLoaded: (user) => dispatch(userLoaded(user)),
-		onUserError: () => dispatch(userError()),
 		onAlbumsLoaded:(albums)=>dispatch(userAlbumsLoaded(albums)),
+		onUserFetchError: () => dispatch(userFetchError()),
+		onUserFetchSuccess:() => dispatch(userFetchSuccess()),
 	}
 }
 export default withService()(connect(mapStateToProps,mapDispatchToProps)(UserPage));

@@ -4,9 +4,11 @@ import icon from './album-icon.svg';
 
 const UserAlbum = ({ number, albumId }) => {
 	return (
-		<li className={styles.album}>
-			<img src={icon} alt="" className={styles.albumIcon} />
-			<span className={styles.albumName}>{`Album ${number+1}`}</span>
+		<li className={styles.albumWrap}>
+			<div className={styles.album}>
+				<img src={icon} alt="" className={styles.albumIcon} />
+				<span className={styles.albumName}>{`Album ${number+1}`}</span>
+			</div>
 		</li>
 	)
 }
