@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
 	userIdRequested,
 	userLoaded,
@@ -13,44 +13,41 @@ import withService from '../hoc/';
 import UserInfo from '../user-info';
 import UserAlbums from '../user-albums';
 
-class UserPage extends Component{
+class UserPage extends Component {
 
 
-	
-	componentDidMount(){
-		const {userId,updateUserId,testService,onUserFetchSuccess, onUserLoaded, onAlbumsLoaded}=this.props;
+
+	componentDidMount() {
+		const { userId, updateUserId, testService, onUserFetchSuccess, onUserLoaded, onAlbumsLoaded } = this.props;
+
 		updateUserId(userId);
-		
-		const getUserData=()=>{
+
+		const getUserInfo = () => {
 			testService.getUser(userId)
-			.then(user => {
-				onUserLoaded(user)
-			})
+				.then(user => {
+					onUserLoaded(user)
+				})
 		}
-		const getUserAlbums = () =>{
+		
+		const getUserAlbums = () => {
 			testService.getUserAlbums(userId)
-			.then(albums=>{
-				onAlbumsLoaded(albums)
-			})
+				.then(albums => {
+					onAlbumsLoaded(albums)
+				})
 		}
 
-		Promise.all([
-			getUserData(),
-			getUserAlbums()])
+		let promiseUserLoad=Promise.all([getUserInfo(),getUserAlbums()])
+		promiseUserLoad
 			.then(result=>{
 				onUserFetchSuccess()
 			})
-
-
-		
-	
 	}
-	render(){
-		const {loading} = this.props;
-		return(
+	render() {
+		const { loading } = this.props;
+		return (
 			<div className="container">
-				<UserInfo/>
-				<UserAlbums/>
+				<UserInfo />
+				<UserAlbums />
 			</div>
 		)
 	}
@@ -63,13 +60,13 @@ const mapStateToProps = (state) => {
 	}
 }
 
-const mapDispatchToProps=(dispatch)=>{
-	return{
-		updateUserId:(id)=>dispatch(userIdRequested(id)),
+const mapDispatchToProps = (dispatch) => {
+	return {
+		updateUserId: (id) => dispatch(userIdRequested(id)),
 		onUserLoaded: (user) => dispatch(userLoaded(user)),
-		onAlbumsLoaded:(albums)=>dispatch(userAlbumsLoaded(albums)),
+		onAlbumsLoaded: (albums) => dispatch(userAlbumsLoaded(albums)),
 		onUserFetchError: () => dispatch(userFetchError()),
-		onUserFetchSuccess:() => dispatch(userFetchSuccess()),
+		onUserFetchSuccess: () => dispatch(userFetchSuccess()),
 	}
 }
-export default withService()(connect(mapStateToProps,mapDispatchToProps)(UserPage));
+export default withService()(connect(mapStateToProps, mapDispatchToProps)(UserPage));
