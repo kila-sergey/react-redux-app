@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import UserItemDetails from '../user-item-details';
 import styles from './styles.module.scss';
 import { Transition } from 'react-transition-group';
 

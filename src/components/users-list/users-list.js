@@ -3,7 +3,7 @@ import styles from './styles.module.scss';
 
 import withService from '../hoc/';
 import { connect } from 'react-redux';
-import { usersLoaded, usersRequested, usersError, fetchUsers } from '../../actions/'
+import { fetchUsers } from '../../actions/'
 
 import UsersListItem from './users-list-item';
 import Spinner from '../spinner';

@@ -15,14 +15,18 @@ export default class TestService {
 		return response;
 	}
 
-	getUser = async (id) =>{
+	getUser = async (id) => {
 		const response = await this.getResourse(`/users/${id}`);
 		return response
 	}
 
-	getUserAlbums = async (id) =>{
+	getUserAlbums = async (id) => {
 		const response = await this.getResourse(`/albums?userId=${id}`);
 		return response
 	}
-}
 
+	getUserPosts = async (id) => {
+		const response = await this.getResourse(`/posts?userId=${id}`);
+		return response;
+	}
+}

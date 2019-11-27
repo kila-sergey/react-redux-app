@@ -7,7 +7,7 @@ import  {
 
 import {
 	userIdRequested,
-	userRequested,
+	userDataRequest,
 	userLoaded,
 	userFetchError,
 	userFetchSuccess
@@ -15,9 +15,12 @@ import {
 
 
 import {
-	userAlbumsRequested,
 	userAlbumsLoaded,
 } from './user-albums';
+
+import {
+	userPostsLoaded,
+} from './user-posts';
 
 export {
 	usersRequested,
@@ -26,11 +29,12 @@ export {
 	fetchUsers,
 	
 	userIdRequested,
-	userRequested,
+	userDataRequest,
 	userFetchSuccess,
 	userFetchError,
 	userLoaded,
 
-	userAlbumsRequested,
 	userAlbumsLoaded,
+
+	userPostsLoaded
 }

@@ -5,9 +5,9 @@ const userIdRequested=(id)=>{
 	}
 }
 
-const userRequested = () => {
+const userDataRequest = () => {
 	return {
-		type: 'FETCH_USER_REQUEST'
+		type: 'FETCH_USERDATA_REQUEST'
 	}
 }
 
@@ -31,7 +31,7 @@ const userFetchSuccess = () =>{
 }
 export {
 	userIdRequested,
-	userRequested,
+	userDataRequest,
 	userLoaded,
 	userFetchError,
 	userFetchSuccess

@@ -13,21 +13,21 @@ const usersLoaded = (users) => {
 
 const usersError = () => {
 	return {
-		type:'FETCH_USERS_ERROR'
+		type: 'FETCH_USERS_ERROR'
 	}
 }
 
-const fetchUsers = (dispatch,service) => () =>{
+const fetchUsers = (dispatch, service) => () => {
 	dispatch(usersRequested());
-		service.getAllUsers()
-			.then(users => {
-				setTimeout(()=>{
-					dispatch(usersLoaded(users))
-				},500)
-			})
-			.catch(err=>{
-				dispatch(usersError())
-			})
+	service.getAllUsers()
+		.then(users => {
+			setTimeout(() => {
+				dispatch(usersLoaded(users))
+			}, 500)
+		})
+		.catch(err => {
+			dispatch(usersError())
+		})
 }
 
 export {

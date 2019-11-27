@@ -1,46 +1,35 @@
-import React, { Component } from 'react';
-import withService from '../hoc';
+import React from 'react';
 import { connect } from 'react-redux';
-import {
-	userRequested,
-	userLoaded,
-	userError
-} from '../../actions';
-import Spinner from '../spinner/';
-import ErrorIndicator from '../error-indicator/';
+
+
 import UserItem from './user-item/';
 import UserItemDetails from './user-item-details/';
 import styles from './styles.module.scss';
 import './styles.scss';
 
 
-class UserInfo extends Component {
-	
-	render() {
-		const { user } = this.props;
-		
-		return (
-			<div className={styles.userBox}>
-				<img src={`../images/avatar-${user.id}.png`} className={styles.userAvatar} />
-				<div className={styles.userInfo}>
-					<div className={styles.name}>{user.name}</div>
-					<UserItem parameter='user-name' value={user.username} />
-					<UserItem parameter='email' value={user.email} />
-					<UserItem parameter='address' value={user.address && user.address.city}>
-						<UserItemDetails parameter='street' value={user.address && user.address.street} />
-						<UserItemDetails parameter='suite' value={user.address && user.address.suite} />
-						<UserItemDetails parameter='zipcode:' value={user.address && user.address.zipcode} />
-					</UserItem>
-					<UserItem parameter='phone' value={user.phone} />
-					<UserItem parameter='website' value={user.website} />
-					<UserItem parameter='company' value={user.company && user.company.name}>
-						<UserItemDetails parameter='business' value={user.company && user.company.bs} />
-						<UserItemDetails parameter='tagline' value={user.company && user.company.catchPhrase} />
-					</UserItem>
-				</div>
+const UserInfo = ({user}) => {
+	return (
+		<div className={styles.userBox}>
+			<img src={`../images/avatar-${user.id}.png`} className={styles.userAvatar} alt="avatar"/>
+			<div className={styles.userInfo}>
+				<div className={styles.name}>{user.name}</div>
+				<UserItem parameter='user-name' value={user.username} />
+				<UserItem parameter='email' value={user.email} />
+				<UserItem parameter='address' value={user.address && user.address.city}>
+					<UserItemDetails parameter='street' value={user.address && user.address.street} />
+					<UserItemDetails parameter='suite' value={user.address && user.address.suite} />
+					<UserItemDetails parameter='zipcode:' value={user.address && user.address.zipcode} />
+				</UserItem>
+				<UserItem parameter='phone' value={user.phone} />
+				<UserItem parameter='website' value={user.website} />
+				<UserItem parameter='company' value={user.company && user.company.name}>
+					<UserItemDetails parameter='business' value={user.company && user.company.bs} />
+					<UserItemDetails parameter='tagline' value={user.company && user.company.catchPhrase} />
+				</UserItem>
 			</div>
-		)
-	}
+		</div>
+	)
 }
 
 const mapStateToProps = (state) => {
@@ -51,4 +40,4 @@ const mapStateToProps = (state) => {
 	}
 }
 
-export default withService()(connect(mapStateToProps, null)(UserInfo))
+export default connect(mapStateToProps, null)(UserInfo)

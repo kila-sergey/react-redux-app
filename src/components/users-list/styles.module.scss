@@ -9,10 +9,10 @@
 	display: flex;
 	align-items: center;
 	padding: 10px 15px;
-	transition: box-shadow .4s ease-out;
+	transition: box-shadow .3s ease-out, transform .3s ease-out;
 	&:hover{
 		cursor: pointer;
-		box-shadow: 0 10px 40px rgba(0,0,0,.2);
+		box-shadow: 0 3px 7px rgba(0,0,0,.2);
 	}
 }
 

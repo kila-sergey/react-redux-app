@@ -1,9 +1,10 @@
 const initialState = {
-	user: {},
 	userId: null,
+	user: {},
 	loading: true,
 	error:false,
-	albums:[]
+	albums:[],
+	posts:[]
 }
 
 const updateActiveUser = (state=initialState, action) => {
@@ -13,7 +14,7 @@ const updateActiveUser = (state=initialState, action) => {
 				...state,
 				userId: action.payload,
 			}
-		case 'FETCH_USER_REQUEST':
+		case 'FETCH_USERDATA_REQUEST':
 			return {
 				...state,
 				loading:true
@@ -28,6 +29,11 @@ const updateActiveUser = (state=initialState, action) => {
 				...state,
 				albums:action.payload
 			}
+		case 'FETCH_USER_POSTS_SUCCESS':
+			return{
+				...state,
+				posts:action.payload
+			}
 		case 'USER_PAGE_LOADED':
 			return{
 				...state,
@@ -41,11 +47,7 @@ const updateActiveUser = (state=initialState, action) => {
 			}
 		default:
 			return {
-				user: state.user,
-				userId: state.userId,
-				loading: true,
-				error:false,
-				albums:state.albums
+				...state
 			}
 	}
 }
