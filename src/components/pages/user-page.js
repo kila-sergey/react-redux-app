@@ -19,7 +19,23 @@ import UserPosts from '../user-posts';
 
 class UserPage extends Component {
 
+	state = {
+		isModalOpen:false
+	}
 
+	onModalOpen=()=>{
+		console.log('modal open')
+		this.setState({
+			isModalOpen:true
+		})
+	}
+
+	onModalClose=()=>{
+		console.log(this.state.isModalOpen)
+		this.setState({
+			isModalOpen:false
+		})
+	}
 
 	componentDidMount() {
 		const { userId,
@@ -77,7 +93,7 @@ class UserPage extends Component {
 		return (
 			<div className="container">
 				<UserInfo />
-				<UserAlbums />
+				<UserAlbums openModal={this.onModalOpen} closeModal={this.onModalClose} isModalOpen={this.state.isModalOpen}/>
 				<UserPosts/>
 			</div>
 		)
