@@ -29,4 +29,9 @@ export default class TestService {
 		const response = await this.getResourse(`/posts?userId=${id}`);
 		return response;
 	}
+
+	getAlbumPhotos = async (id) => {
+		const response = await this.getResourse(`photos?albumId=${id}`);
+		return response;
+	}
 }

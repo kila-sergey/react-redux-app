@@ -3,22 +3,24 @@ import { connect } from 'react-redux';
 
 
 import Modal from '../modal';
+import AlbumPhotos from '../album-photos';
 import UserAlbum from './user-album';
 import styles from './styles.module.scss';
 
 
-const UserAlbums = ({ albums, openModal, closeModal,isModalOpen}) => {
-	console.log(isModalOpen)
+const UserAlbums = ({ albums, openAlbumModal, closeModal, isModalOpen, albumId}) => {
 	return (
 		<ul className={styles.albums}>
 			{
 				albums.map((album, id) => {
 					return (
-						<UserAlbum number={id} albumId={album.id} key={album.id} openModal={openModal}/>
+						<UserAlbum number={id} albumId={album.id} key={album.id} openAlbumModal={openAlbumModal}/>
 					)
 				})
 			}
-			<Modal closeModal={closeModal} isModalOpen={isModalOpen}/>
+			<Modal closeModal={closeModal} isModalOpen={isModalOpen}>
+				<AlbumPhotos albumId={albumId}/>
+			</Modal>
 		</ul>
 	)
 }
@@ -26,7 +28,6 @@ const UserAlbums = ({ albums, openModal, closeModal,isModalOpen}) => {
 const mapStatetoProps = (state) => {
 	return {
 		albums: state.activeUser.albums,
-		loading: state.activeUser.loading
 	}
 }
 

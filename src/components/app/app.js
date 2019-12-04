@@ -3,11 +3,11 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import  './app.scss';
 
-import withService from '../hoc/';
+import withService from '../hoc';
 import HomePage from '../pages/home-page';
 import UsersPage from '../pages/users-page';
 import UserPage from '../pages/user-page';
-import AppHeader from '../app-header/';
+import AppHeader from '../app-header';
 
 
 const App = ({ testService }) => {

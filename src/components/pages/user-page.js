@@ -20,18 +20,18 @@ import UserPosts from '../user-posts';
 class UserPage extends Component {
 
 	state = {
-		isModalOpen:false
+		isModalOpen:false,
+		albumId:null
 	}
 
-	onModalOpen=()=>{
-		console.log('modal open')
+	onAlbumModalOpen=(id)=>{
 		this.setState({
-			isModalOpen:true
+			isModalOpen:true,
+			albumId:id
 		})
 	}
 
 	onModalClose=()=>{
-		console.log(this.state.isModalOpen)
 		this.setState({
 			isModalOpen:false
 		})
@@ -93,7 +93,7 @@ class UserPage extends Component {
 		return (
 			<div className="container">
 				<UserInfo />
-				<UserAlbums openModal={this.onModalOpen} closeModal={this.onModalClose} isModalOpen={this.state.isModalOpen}/>
+				<UserAlbums openAlbumModal={this.onAlbumModalOpen} closeModal={this.onModalClose} isModalOpen={this.state.isModalOpen} albumId={this.state.albumId}/>
 				<UserPosts/>
 			</div>
 		)
