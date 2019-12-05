@@ -69,7 +69,6 @@ class UserPage extends Component {
 		const getUserPosts = () =>{
 			return testService.getUserPosts(userId)
 				.then(posts=>{
-					console.log(posts)
 					onPostsLoaded(posts)
 				})
 		}

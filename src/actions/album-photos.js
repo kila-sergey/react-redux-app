@@ -10,3 +10,15 @@ const albumPhotosLoaded = (photos) => {
 		payload: photos
 	}
 }
+
+const albumPhotosFailed = () =>{
+	return {
+		type: 'FETCH_ALBUM_PHOTOS_ERROR'
+	}
+}
+
+export {
+	albumPhotosRequested,
+	albumPhotosLoaded,
+	albumPhotosFailed
+}

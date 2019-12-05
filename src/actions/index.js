@@ -22,6 +22,12 @@ import {
 	userPostsLoaded,
 } from './user-posts';
 
+import {
+	albumPhotosRequested,
+	albumPhotosLoaded,
+	albumPhotosFailed
+} from './album-photos';
+
 export {
 	usersRequested,
 	usersLoaded,
@@ -36,5 +42,9 @@ export {
 
 	userAlbumsLoaded,
 
-	userPostsLoaded
+	userPostsLoaded,
+
+	albumPhotosRequested,
+	albumPhotosLoaded,
+	albumPhotosFailed
 }

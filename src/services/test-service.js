@@ -31,7 +31,7 @@ export default class TestService {
 	}
 
 	getAlbumPhotos = async (id) => {
-		const response = await this.getResourse(`photos?albumId=${id}`);
+		const response = await this.getResourse(`/photos?albumId=${id}`);
 		return response;
 	}
 }
