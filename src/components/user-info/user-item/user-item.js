@@ -14,7 +14,7 @@ const UserItem = ({ children, parameter, value }) => {
 			<span className={styles.userItemParameter}>{parameter}</span>
 			<span className={styles.userItemValue}>{value}</span>
 			{children && (
-				<button className={styles.userItemMore} onClick={() => toggleItemDetails()}>Show More</button>
+				<button className='button' onClick={() => toggleItemDetails()}>Show More</button>
 			)}
 			<Transition
 				in={isDetailsOpen}

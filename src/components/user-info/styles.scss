@@ -6,7 +6,6 @@
 	transition: all .5s ease-out;
 	transform-origin: top;
 	&-entering{
-		// max-height: 0;
 		transform: scaleY(0);
 	}
 	&-entered{

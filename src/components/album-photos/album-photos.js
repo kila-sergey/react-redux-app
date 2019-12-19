@@ -16,9 +16,9 @@ import styles from './styles.module.scss';
 
 class AlbumPhotos extends Component {
 	componentDidUpdate(prevProps) {
-		const { albumId, testService, fetchPhotosSuccess, fetchPhotoRequest, fetchPhotosError } = this.props;
+		const { albumId, testService, fetchPhotosSuccess, fetchPhotosRequest, fetchPhotosError } = this.props;
 		if (prevProps.albumId !== albumId) {
-			fetchPhotoRequest();
+			fetchPhotosRequest();
 			testService.getAlbumPhotos(albumId)
 				.then((photos) => {
 					console.log(photos)
@@ -33,7 +33,7 @@ class AlbumPhotos extends Component {
 	render() {
 		const { photos = [] , loading , error} = this.props;
 		const photoList = photos.map(photo => {
-			return <AlbumPhoto photo={photo} />
+			return <AlbumPhoto photo={photo} key={photo.id} />
 		})
 
 		if(error){
@@ -60,7 +60,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		fetchPhotoRequest: () => { dispatch(albumPhotosRequested()) },
+		fetchPhotosRequest: () => { dispatch(albumPhotosRequested()) },
 		fetchPhotosSuccess: (id) => { dispatch(albumPhotosLoaded(id)) },
 		fetchPhotosError:()=>{dispatch(albumPhotosFailed())}
 	}

@@ -13,10 +13,7 @@ const UserPost = ({post}) => {
 			</div>
 			<p className={styles.postText}>{post.body}</p>
 			<div className={styles.postComments}>
-				<button className={styles.commentsOpen}>
-					<img src={commentsIcon} className={styles.commentsOpenIcon} />
-				</button>
-				<span className={styles.commentsCount}>12</span>
+				<button className="button">Show Comments</button>
 			</div>
 		</li>
 	)
