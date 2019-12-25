@@ -34,4 +34,9 @@ export default class TestService {
 		const response = await this.getResourse(`/photos?albumId=${id}`);
 		return response;
 	}
+
+	getPostComments = async (id) => {
+		const response = await this.getResourse(`/comments?postId=${id}`);
+		return response;
+	}
 }

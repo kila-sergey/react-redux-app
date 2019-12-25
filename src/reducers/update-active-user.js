@@ -45,6 +45,20 @@ const updateActiveUser = (state=initialState, action) => {
 				loading: false,
 				error:true
 			}
+		case 'FETCH_POST_COMMENTS_SUCCESS':
+			const post = state.posts.find(post=>{
+				return post.id===action.postId
+			})
+			console.log(post)
+			return {
+				...state,
+				posts:[...state.posts, action.payload]
+			}
+		case 'FETCH_POSTS_COMMENTS_ERROR':
+			return {
+				...state,
+				error:true
+			}
 		default:
 			return {
 				...state

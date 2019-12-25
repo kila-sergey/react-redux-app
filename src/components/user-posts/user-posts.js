@@ -1,31 +1,67 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import withService from '../hoc';
 
 import UserPost from './user-post';
 
+import {
+	postCommentsLoaded,
+	postCommentsFailed
+} from '../../actions';
 import styles from './style.module.scss';
 
-const UserPosts = ({posts,name}) =>{
-	const postList = posts.map(post=>{
-		return <UserPost post={post} key={post.id}/>
-	})
-	const nameToView=name.split(' ')[0];
-	
-	return(
-		<div className={styles.posts}>
-			<h2 className={styles.title}>{nameToView}'s posts</h2>
-			<ul className={styles.postsList}>
-				{postList}
-			</ul>
-		</div>
-	)
+class UserPosts extends Component {
+
+	render() {
+		const { name, posts, testService, postCommentsLoaded, postCommentsFailed } = this.props;
+		const nameToView = name.split(' ')[0];
+
+		const fetchComments = (id) => {
+			const post = posts.find(post => {
+				return post.id === id
+			})
+			const isHaveComments = Boolean(post.comments);
+			if(isHaveComments) {
+				return
+			}
+			else {
+				testService.getPostComments(id)
+					.then(comments => {
+						postCommentsLoaded(comments, id);
+					})
+					.catch(err => {
+						postCommentsFailed();
+					});
+			}
+		}
+
+		const postList = posts.map(post => {
+			return <UserPost post={post} key={post.id} onShowComments={fetchComments}/>
+		})
+
+		return (
+			<div className={styles.posts}>
+				<h2 className={styles.title}>{nameToView}'s posts</h2>
+				<ul className={styles.postsList}>
+					{postList}
+				</ul>
+			</div>
+		)
+	}
 }
 
 const mapStateToProps = (state) => {
 	return {
-		posts:state.activeUser.posts,
-		name:state.activeUser.user.name
+		posts: state.activeUser.posts,
+		name: state.activeUser.user.name
 	}
 }
-export default connect(mapStateToProps,null)(UserPosts);
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		postCommentsLoaded: (comments, postId) => dispatch(postCommentsLoaded(comments, postId)),
+		postCommentsFailed: () => dispatch(postCommentsFailed())
+	}
+}
+export default withService()(connect(mapStateToProps, mapDispatchToProps)(UserPosts));

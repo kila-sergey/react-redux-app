@@ -28,6 +28,12 @@ import {
 	albumPhotosFailed
 } from './album-photos';
 
+
+import {
+	postCommentsLoaded,
+	postCommentsFailed
+} from './post-comments';
+
 export {
 	usersRequested,
 	usersLoaded,
@@ -46,5 +52,8 @@ export {
 
 	albumPhotosRequested,
 	albumPhotosLoaded,
-	albumPhotosFailed
+	albumPhotosFailed,
+
+	postCommentsLoaded,
+	postCommentsFailed
 }

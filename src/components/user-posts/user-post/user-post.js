@@ -2,9 +2,8 @@ import React from 'react';
 
 import styles from './styles.module.scss';
 import icon from './icon.svg';
-import commentsIcon from './comments.svg';
 
-const UserPost = ({post}) => {
+const UserPost = ({ post, onShowComments }) => {
 	return (
 		<li className={styles.post}>
 			<div className={styles.postRow}>
@@ -13,7 +12,7 @@ const UserPost = ({post}) => {
 			</div>
 			<p className={styles.postText}>{post.body}</p>
 			<div className={styles.postComments}>
-				<button className="button">Show Comments</button>
+				<button className="button" onClick={()=>onShowComments(post.id)}>Show Comments</button>
 			</div>
 		</li>
 	)

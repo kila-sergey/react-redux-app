@@ -21,7 +21,6 @@ class AlbumPhotos extends Component {
 			fetchPhotosRequest();
 			testService.getAlbumPhotos(albumId)
 				.then((photos) => {
-					console.log(photos)
 					fetchPhotosSuccess(photos)
 				})
 				.catch(err=>{
