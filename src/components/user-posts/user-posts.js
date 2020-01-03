@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import withService from '../hoc';
 
 import UserPost from './user-post';
+import PostComments from './post-comments';
 
 import {
 	postCommentsLoaded,
@@ -22,8 +23,8 @@ class UserPosts extends Component {
 				return post.id === id
 			})
 			const isHaveComments = Boolean(post.comments);
-			if(isHaveComments) {
-				return
+			if (isHaveComments) {
+				console.log(post.comments)
 			}
 			else {
 				testService.getPostComments(id)
@@ -37,7 +38,14 @@ class UserPosts extends Component {
 		}
 
 		const postList = posts.map(post => {
-			return <UserPost post={post} key={post.id} onShowComments={fetchComments}/>
+			return (
+				<UserPost post={post} key={post.id} onShowComments={fetchComments}>
+					{
+						post.comments &&
+						<PostComments comments={post.comments} />
+					}	
+				</UserPost>
+			)
 		})
 
 		return (

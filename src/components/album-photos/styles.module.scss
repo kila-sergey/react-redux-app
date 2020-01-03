@@ -16,10 +16,13 @@
 		width: 12px;
 	}
 	&::-webkit-scrollbar-track {
-		-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+		-webkit-box-shadow: none; 
 	}
 	&::-webkit-scrollbar-thumb {
 		border-radius: 10px;
 		background: darken(#e6e6e6,20%);
+		&:hover{
+			background: darken(#e6e6e6,30%);
+		}
 	}
 }
