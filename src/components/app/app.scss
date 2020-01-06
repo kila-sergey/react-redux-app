@@ -36,13 +36,31 @@ a {
 	outline: none;
 	transition: box-shadow .3s ease-out, border .3s ease-out;
 
-	&:focus {
-		border: 1px solid #000;
-	}
-
 	&:hover {
 		box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.5);
 		border: 1px solid transparent;
 		cursor: pointer;
+	}
+	&:active{
+		box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 0.5);
+	}
+}
+
+.user-details-box{
+	padding-left: 35px;
+	min-width: 100%;
+	transition: all .5s ease;
+	overflow: hidden;
+}
+.user-details-box-enter{
+	max-height: 0;
+	&.user-details-box-enter-active{
+		max-height: 200px;
+	}
+}
+.user-details-box-exit{
+	max-height: 200px;
+	&.user-details-box-exit-active{
+		max-height: 0;
 	}
 }

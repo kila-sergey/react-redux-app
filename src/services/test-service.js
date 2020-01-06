@@ -7,7 +7,7 @@ export default class TestService {
 		if (!response.ok) {
 			throw new Error(`Can't fetch ${url}, received ${response.status}`)
 		}
-		return response.json()
+		return response.json();
 	}
 
 	getAllUsers = async () => {
@@ -17,12 +17,12 @@ export default class TestService {
 
 	getUser = async (id) => {
 		const response = await this.getResourse(`/users/${id}`);
-		return response
+		return response;
 	}
 
 	getUserAlbums = async (id) => {
 		const response = await this.getResourse(`/albums?userId=${id}`);
-		return response
+		return response;
 	}
 
 	getUserPosts = async (id) => {

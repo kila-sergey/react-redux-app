@@ -3,6 +3,9 @@
 	align-items: center;
 	font-size: 14px;
 	margin-bottom: 10px;
+	&:first-child{
+		margin-top: 10px;
+	}
 	&__parameter{
 		font-weight: 400;
 		padding-right: 5px;

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import styles from './styles.module.scss';
-import { Transition } from 'react-transition-group';
+import { CSSTransition } from 'react-transition-group';
 
 const UserItem = ({ children, parameter, value }) => {
 	const [isDetailsOpen, setOpenDetails] = useState(false);
@@ -8,7 +8,6 @@ const UserItem = ({ children, parameter, value }) => {
 	const toggleItemDetails = () => {
 		setOpenDetails(!isDetailsOpen);
 	}
-
 	return (
 		<div className={styles.userItem}>
 			<span className={styles.userItemParameter}>{parameter}</span>
@@ -16,24 +15,21 @@ const UserItem = ({ children, parameter, value }) => {
 			{children && (
 				<button className='button' onClick={() => toggleItemDetails()}>Show More</button>
 			)}
-			<Transition
+			<CSSTransition
 				in={isDetailsOpen}
 				timeout={{
-					enter: 100,
-					exit: 500,
+					enter:500,
+					exit:500
 				}}
+				classNames='user-details-box'
 				unmountOnExit={true}
-				mountOnEnter={true}>
-				{
-					(state) => (
-						(
-							<div className={`user-details-box user-details-box-${state}`}>
-								{children}
-							</div>
-						)
-					)
-				}
-			</Transition>
+				mountOnEnter={true}
+				appear={true}
+				>
+				<div className={`user-details-box`}>
+					{children}
+				</div>
+			</CSSTransition>
 		</div>
 	)
 }

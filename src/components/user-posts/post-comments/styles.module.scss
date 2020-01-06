@@ -1,4 +1,30 @@
-.comments{
-	padding-top: 20px;
-	padding-left: 50px;
+.comments {
+	padding-left: 25px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.comment {
+	width: 60%;
+	border: 1px solid #e6e6e6;
+	&:first-child {
+		margin-top: 20px;
+	}
+	&:not(:last-child){
+		margin-bottom: 30px;
+	}
+}
+
+.comment-email {
+	padding: 10px;
+	border: 1px solid #e6e6e6;
+	border-bottom: none;
+	background-color: #f6f8fa;
+}
+
+.comment-text {
+	padding: 15px;
+	border: 1px solid #e6e6e6;
+	font-weight: 300;
 }

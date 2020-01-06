@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import UserItem from './user-item/';
 import UserItemDetails from './user-item-details/';
 import styles from './styles.module.scss';
-import './styles.scss';
 
 
 const UserInfo = ({user}) => {
