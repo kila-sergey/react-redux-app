@@ -10,9 +10,15 @@ export default class AppHeader extends Component {
 		isOpened: false
 	}
 
-	toggleBurger = () => {
+	toggleMenu = () => {
 		this.setState({
 			isOpened: !this.state.isOpened
+		})
+	}
+
+	closeMenu = () => {
+		this.setState({
+			isOpened:false
 		})
 	}
 
@@ -26,8 +32,8 @@ export default class AppHeader extends Component {
 								<img src={logo} alt="React-App" className={styles.logoImage} />
 							</span>
 						</Link>
-						<Hamburger onBurgerToggle={this.toggleBurger} isOpened={this.state.isOpened} />
-						<Menu isOpened={this.state.isOpened} toggleMenu={this.toggleBurger} />
+						<Hamburger onBurgerToggle={this.toggleMenu} isOpened={this.state.isOpened} />
+						<Menu isOpened={this.state.isOpened} toggleMenu={this.toggleMenu} closeMenu={this.closeMenu}/>
 					</div>
 				</div>
 			</header>

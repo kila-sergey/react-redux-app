@@ -24,7 +24,7 @@ class UserPosts extends Component {
 			})
 			const isHaveComments = Boolean(post.comments);
 			if (isHaveComments) {
-				console.log(post.comments)
+				return;
 			}
 			else {
 				testService.getPostComments(id)

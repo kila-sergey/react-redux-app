@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './styles.module.scss';
+import { CSSTransition } from 'react-transition-group';
 
 const PostComments = ({comments}) => {
 
@@ -12,11 +13,10 @@ const PostComments = ({comments}) => {
 		)
 	})
 
-	console.log(comments)
 	return (
-		<ul className={styles.comments}>
+		<React.Fragment>
 			{commentsToRender}
-		</ul>
+		</React.Fragment>
 	)
 }
 

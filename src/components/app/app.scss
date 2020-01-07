@@ -64,3 +64,25 @@ a {
 		max-height: 0;
 	}
 }
+
+.comments {
+	padding-left: 25px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	transition: all .5s ease;
+	overflow: hidden;
+	transform-origin: top;
+}
+.comments-enter{
+	max-height: 0;
+	&.comments-enter-active{
+		max-height: 1000px;
+	}
+}
+.comments-exit{
+	max-height: 1000px;
+	&.comments-exit-active{
+		max-height: 0;
+	}
+}
