@@ -13,9 +13,7 @@ class UsersList extends Component {
 
 	componentDidMount() {
 		const { fetchUsers } = this.props;
-
-		fetchUsers()
-
+		fetchUsers();
 	}
 
 	render() {

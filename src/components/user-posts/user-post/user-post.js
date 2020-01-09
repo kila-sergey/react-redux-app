@@ -10,7 +10,7 @@ const UserPost = ({ post, onShowComments, children }) => {
 	const showCommentsToggle = () => {
 		setCommentsShow(!isCommentsShown);
 	}
-	const isCanViewComments = Boolean(isCommentsShown&&post.comments);
+	const isShouldViewComments = Boolean(isCommentsShown&&post.comments);
 	return (
 		<li className={styles.post}>
 			<div className={styles.postRow}>
@@ -27,7 +27,7 @@ const UserPost = ({ post, onShowComments, children }) => {
 				</button>
 			</div>
 			<CSSTransition
-				in={isCanViewComments}
+				in={isShouldViewComments}
 				timeout={{
 					enter: 500,
 					exit: 500
