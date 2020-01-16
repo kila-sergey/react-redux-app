@@ -74,10 +74,10 @@ class UserPage extends Component {
 		}
 		let promiseUserLoad = Promise.all([getUserInfo(), getUserAlbums(),getUserPosts()])
 		promiseUserLoad
-			.then(result => {
+			.then(() => {
 				onUserFetchSuccess();
 			})
-			.catch(error => {
+			.catch(() => {
 				onUserFetchError();
 			})
 	}

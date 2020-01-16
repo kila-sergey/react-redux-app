@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
+import {
+	USERS_PAGE_PATH,
+	POSTS_PAGE_PATH
+} from '../../constants/router-constants';
 import './menu.scss';
 
 const Menu = ({ isOpened, toggleMenu, closeMenu }) => {
@@ -18,10 +22,11 @@ const Menu = ({ isOpened, toggleMenu, closeMenu }) => {
 			<React.Fragment>
 				<ul className="menu">
 					<li className="menu__item">
-						<Link to="/users" className="menu__link" onClick={() => toggleMenu()}>Users</Link>
+						<Link to={USERS_PAGE_PATH} className="menu__link" onClick={() => toggleMenu()}>Users</Link>
 					</li>
-					<li className="menu__item">2</li>
-					<li className="menu__item">3</li>
+					<li className="menu__item">
+						<Link to={POSTS_PAGE_PATH} className="menu__link" onClick={() => toggleMenu()}>Posts</Link>
+					</li>
 				</ul>
 				<div className="menu-overlay" onClick={() => closeMenu()}></div>
 			</React.Fragment>

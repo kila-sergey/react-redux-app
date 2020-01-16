@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import styles from './style.module.scss';
 import { Link } from 'react-router-dom';
 import logo from './logo.svg';
 import { Hamburger, Menu } from '../menu';
+import {
+	HOME_PAGE_PATH
+} from '../../constants/router-constants';
+import styles from './style.module.scss';
 
 export default class AppHeader extends Component {
 
@@ -27,7 +30,7 @@ export default class AppHeader extends Component {
 			<header className={styles.header}>
 				<div className="container">
 					<div className={styles.headerWrap}>
-						<Link to="/">
+						<Link to={HOME_PAGE_PATH}>
 							<span className={styles.logo}>
 								<img src={logo} alt="React-App" className={styles.logoImage} />
 							</span>

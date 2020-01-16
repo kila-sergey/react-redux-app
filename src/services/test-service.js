@@ -11,7 +11,7 @@ export default class TestService {
 	}
 
 	getAllUsers = async () => {
-		const response = await this.getResourse('/users/')
+		const response = await this.getResourse('/users/');
 		return response;
 	}
 
@@ -37,6 +37,11 @@ export default class TestService {
 
 	getPostComments = async (id) => {
 		const response = await this.getResourse(`/comments?postId=${id}`);
+		return response;
+	}
+
+	getAllPosts = async () => {
+		const response = await this.getResourse('/posts');
 		return response;
 	}
 }
