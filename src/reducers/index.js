@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux'
-import updateUsersList from './update-users-list';
-import updateActiveUser from './update-active-user';
-import updateAlbumPhotos from './update-album-photos';
+import usersList from './users-list';
+import activeUser from './active-user';
+import albumPhotos from './album-photos';
+import postsPage from './posts-page';
 
 export default combineReducers({
-	usersList:updateUsersList,
-	activeUser:updateActiveUser,
-	albumPhotos:updateAlbumPhotos
+	usersList:usersList,
+	activeUser:activeUser,
+	albumPhotos:albumPhotos,
+	postsPage: postsPage,
 })
 

@@ -1,4 +1,4 @@
-import  {
+import {
 	usersRequested,
 	usersLoaded,
 	usersError,
@@ -34,12 +34,18 @@ import {
 	postCommentsFailed
 } from './post-comments';
 
+import {
+	postsRequested,
+	postsLoaded,
+	postsErrored
+} from './posts-page';
+
 export {
 	usersRequested,
 	usersLoaded,
 	usersError,
 	fetchUsers,
-	
+
 	userIdRequested,
 	userDataRequest,
 	userFetchSuccess,
@@ -55,5 +61,9 @@ export {
 	albumPhotosFailed,
 
 	postCommentsLoaded,
-	postCommentsFailed
+	postCommentsFailed,
+
+	postsRequested,
+	postsLoaded,
+	postsErrored,
 }

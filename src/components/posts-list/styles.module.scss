@@ -1,0 +1,11 @@
+.posts-list-item {
+	&:not(:last-child) {
+		margin-bottom: 20px;
+	}
+}
+.title{
+	display: block;
+}
+.body{
+	display: block;
+}
