@@ -14,7 +14,7 @@ const UserPost = ({ post, onShowComments, children }) => {
 	return (
 		<li className={styles.post}>
 			<div className={styles.postRow}>
-				<img className={styles.postIcon} src={icon} />
+				<img className={styles.postIcon} src={icon} alt='post'/>
 				<h3 className={styles.postTitle}>{post.title}</h3>
 			</div>
 			<p className={styles.postText}>{post.body}</p>
