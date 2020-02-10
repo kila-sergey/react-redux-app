@@ -139,7 +139,7 @@
   },
   "devDependencies": {
     "classnames": "^2.2.6",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "sass-resources-loader": "^2.0.1"
   }
 }

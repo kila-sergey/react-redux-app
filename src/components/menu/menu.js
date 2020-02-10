@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import {
@@ -32,6 +33,12 @@ const Menu = ({ isOpened, toggleMenu, closeMenu }) => {
 			</React.Fragment>
 		</CSSTransition>
 	)
+}
+
+Menu.propTypes = {
+  isOpened: PropTypes.bool,
+  toggleMenu: PropTypes.func,
+  closeMenu: PropTypes.func,
 }
 
 export default Menu;

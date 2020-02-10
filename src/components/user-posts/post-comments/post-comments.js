@@ -6,7 +6,7 @@ const PostComments = ({comments}) => {
 
 	const commentsToRender = comments.map(comment=>{
 		return(
-			<li className={styles.comment}>
+			<li className={styles.comment} key={comment.id}>
 				<div className={styles.commentEmail}>{comment.email}</div>
 				<p className={styles.commentText}>{comment.body}</p>
 			</li>

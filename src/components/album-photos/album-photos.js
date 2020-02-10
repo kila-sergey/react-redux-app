@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import withService from '../hoc/';
 
@@ -30,7 +31,7 @@ class AlbumPhotos extends Component {
 
 	}
 	render() {
-		const { photos = [] , loading , error} = this.props;
+		const { photos , loading , error} = this.props;
 		const photoList = photos.map(photo => {
 			return <AlbumPhoto photo={photo} key={photo.id} />
 		})
@@ -47,6 +48,21 @@ class AlbumPhotos extends Component {
 		)
 
 	}
+}
+
+AlbumPhotos.defaultProps = {
+  photos: [],
+}
+
+AlbumPhotos.propTypes = {
+  albumId:PropTypes.number,
+  fetchPhotosSuccess: PropTypes.func,
+  fetchPhotosError: PropTypes.func,
+  fetchPhotosRequest: PropTypes.func,
+  testService: PropTypes.object,
+  error: PropTypes.bool,
+  loading: PropTypes.bool,
+  photos: PropTypes.array,
 }
 
 const mapStateToProps = (state) => {

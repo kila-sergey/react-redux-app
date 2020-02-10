@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import PostsList from '../posts-list';
 import Spinner from '../spinner';
@@ -33,7 +34,8 @@ class PostPage extends Component {
 		this.setState({
 			searchValue: e.target.value
 		})
-	}
+  }
+  
 	filterItems = (items, searchValue = '') => {
 		if (searchValue.length === 0) {
 			return items;
@@ -66,6 +68,15 @@ class PostPage extends Component {
 			</div>
 		)
 	}
+}
+
+PostPage.propTypes = {
+  error: PropTypes.bool,
+  loading: PropTypes.bool,
+  posts: PropTypes.array,
+  postsErrored: PropTypes.func,
+  postsRequested: PropTypes.func,
+  postsLoaded: PropTypes.func,
 }
 
 const mapStateToProps = (state) => {
