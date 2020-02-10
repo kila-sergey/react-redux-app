@@ -8,7 +8,7 @@ const Hamburger = ({ isOpened, onBurgerToggle }) => {
 			<span></span>
 			<span></span>
 			<span></span>
-			<span></span>
+			{/* <span></span> */}
 		</div>
 	)
 }
