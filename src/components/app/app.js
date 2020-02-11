@@ -19,7 +19,7 @@ const App = () => {
 	return (
 		<main className='app'>
 			<AppHeader />
-			<Suspense fallback={<div>Загрузка...</div>}>
+			<Suspense fallback={<></>}>
 				<Switch>
 					<Route path={HOME_PAGE_PATH} component={HomePage} exact />
 					<Route path={USERS_PAGE_PATH} component={UsersPage} exact />

@@ -1,0 +1,29 @@
+.search {
+  width: 300px;
+  border: none;
+  outline: none;
+  height: 30px;
+  padding: 0 10px 0 25px;
+  border-radius: 5px;
+  border: 1px solid #e6e6e6;
+  transition: border .3s ease;
+  background-image: url('./search.svg');
+  background-repeat: no-repeat;
+  background-size: 15px;
+  background-position-y: 50%;
+  background-position-x: 5px;
+
+  &:hover {
+    border: 1px solid darken(#e6e6e6, 10%);
+  }
+
+  &.isfocused {
+    border: 1px solid #0483f6;
+  }
+
+}
+
+.icon {
+  width: 15px;
+  height: 15px;
+}

@@ -45,7 +45,8 @@ class PostPage extends Component {
 					.toLowerCase()
 					.indexOf(searchValue.toLowerCase()) > -1;
 		})
-	}
+  }
+  
 	render() {
 		const { loading, error, posts } = this.props;
 		const { searchValue } = this.state;
@@ -63,7 +64,7 @@ class PostPage extends Component {
 				}
 				{
 					!loading && !error &&
-					<PostsList posts={visiblePosts} />
+					<PostsList posts={visiblePosts} searchValue={searchValue}/>
 				}
 			</div>
 		)
