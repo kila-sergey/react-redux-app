@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import Button from '../../button';
 import styles from './styles.module.scss';
 import icon from './icon.svg';
 import { CSSTransition } from 'react-transition-group';
@@ -19,12 +20,12 @@ const UserPost = ({ post, onShowComments, children }) => {
 			</div>
 			<p className={styles.postText}>{post.body}</p>
 			<div className={styles.postComments}>
-				<button className="button" onClick={() => {
-					onShowComments(post.id);
-					showCommentsToggle();
-				}}>
-					Show Comments
-				</button>
+				<Button 
+					onClick={()=> {
+						onShowComments(post.id);
+						showCommentsToggle();
+					}}
+					name = "Show Comments" />
 			</div>
 			<CSSTransition
 				in={isShouldViewComments}

@@ -5,6 +5,8 @@ import PostsList from '../posts-list';
 import Spinner from '../spinner';
 import ErrorIndicator from '../error-indicator/';
 import Search from '../search';
+import Button from '../button';
+import PostsSort from '../posts-sort';
 import withService from '../hoc/';
 import {
 	postsRequested,
@@ -16,6 +18,7 @@ class PostPage extends Component {
 
 	state = {
 		searchValue: '',
+		sortBy: 'user',
 	}
 
 	componentDidMount() {
@@ -34,26 +37,62 @@ class PostPage extends Component {
 		this.setState({
 			searchValue: e.target.value
 		})
-  }
-  
+	}
+
 	filterItems = (items, searchValue = '') => {
 		if (searchValue.length === 0) {
 			return items;
 		}
 		return items.filter(item => {
 			return item.title
-					.toLowerCase()
-					.indexOf(searchValue.toLowerCase()) > -1;
+				.toLowerCase()
+				.indexOf(searchValue.toLowerCase()) > -1;
 		})
-  }
-  
+	}
+
+	sort = (items, sortValue) => {
+		switch (sortValue) {
+			case 'title':
+				return items.sort((a, b) => {
+					if (a.title < b.title) {
+						return -1
+					}
+					if (a.title > b.title) {
+						return 1
+					}
+					return 0
+				})
+			case 'user':
+				return items.sort((a, b) => {
+					if (a.userId < b.userId) {
+						return -1
+					}
+					if (a.userId > b.userId) {
+						return 1
+					}
+					return 0
+				})
+			default:
+				return items
+		}
+	}
+
+	onSortToggle = (sortBy) => {
+		this.setState({
+			sortBy
+		})
+	}
 	render() {
 		const { loading, error, posts } = this.props;
-		const { searchValue } = this.state;
-		const visiblePosts = this.filterItems(posts, searchValue);
+		const { searchValue, sortBy } = this.state;
+		const visiblePosts = this.sort(this.filterItems(posts, searchValue), sortBy);
 		return (
 			<div className="container">
 				<Search value={this.state.searchValue} onChange={this.onSearchChange} />
+				<PostsSort>
+					<Button onClick={() => this.onSortToggle('title')} name="name" />
+					<Button onClick={() => this.onSortToggle('user')} name="user" />
+				</PostsSort>
 				{
 					loading &&
 					<Spinner />
@@ -64,7 +103,7 @@ class PostPage extends Component {
 				}
 				{
 					!loading && !error &&
-					<PostsList posts={visiblePosts} searchValue={searchValue}/>
+					<PostsList posts={visiblePosts} searchValue={searchValue} />
 				}
 			</div>
 		)
@@ -72,12 +111,12 @@ class PostPage extends Component {
 }
 
 PostPage.propTypes = {
-  error: PropTypes.bool,
-  loading: PropTypes.bool,
-  posts: PropTypes.array,
-  postsErrored: PropTypes.func,
-  postsRequested: PropTypes.func,
-  postsLoaded: PropTypes.func,
+	error: PropTypes.bool,
+	loading: PropTypes.bool,
+	posts: PropTypes.array,
+	postsErrored: PropTypes.func,
+	postsRequested: PropTypes.func,
+	postsLoaded: PropTypes.func,
 }
 
 const mapStateToProps = (state) => {
