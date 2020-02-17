@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 
 import Button from '../../button';
+import Spinner from '../../spinner';
 import styles from './styles.module.scss';
 import icon from './icon.svg';
 import { CSSTransition } from 'react-transition-group';
+import PropTypes from 'prop-types';
 
-const UserPost = ({ post, onShowComments, children }) => {
+const UserPost = ({ post, onShowComments, children, loading }) => {
 	const [isCommentsShown, setCommentsShow] = useState(false);
 
 	const showCommentsToggle = () => {
@@ -26,6 +28,10 @@ const UserPost = ({ post, onShowComments, children }) => {
 						showCommentsToggle();
 					}}
 					name = "Show Comments" />
+         {
+            loading &&
+            <Spinner size="sm"/>
+         } 
 			</div>
 			<CSSTransition
 				in={isShouldViewComments}
@@ -44,6 +50,16 @@ const UserPost = ({ post, onShowComments, children }) => {
 			</CSSTransition>
 		</li>
 	)
+}
+
+UserPost.defaultProps = {
+  loading:false
+}
+
+UserPost.propTypes = {
+  post: PropTypes.object,
+  onShowComments: PropTypes.func,
+  loading: PropTypes.bool,
 }
 
 export default UserPost;

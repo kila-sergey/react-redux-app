@@ -7,7 +7,25 @@ const initialState = {
 	posts:[]
 }
 
-const postsUpdate = (state, action) => {
+const postsLoading = (state, action) => {
+  const post = state.posts.find(post=>{
+		return post.id===action.postId;
+	})
+	const postIndex = state.posts.findIndex(post=>{
+		return post.id===action.postId;
+	})
+	const postLoading = {
+		...post,
+		loading:true
+  };
+  return [
+		...state.posts.slice(0, postIndex),
+		postLoading,
+		...state.posts.slice(postIndex + 1)
+	];
+}
+
+const postsSuccess = (state, action) => {
 	const post = state.posts.find(post=>{
 		return post.id===action.postId;
 	})
@@ -16,7 +34,8 @@ const postsUpdate = (state, action) => {
 	})
 	const postWithComments = {
 		...post,
-		comments:action.payload
+    comments:action.payload,
+    // loading:false
 	};
 	return [
 		...state.posts.slice(0, postIndex),
@@ -24,6 +43,8 @@ const postsUpdate = (state, action) => {
 		...state.posts.slice(postIndex + 1)
 	];
 }
+
+
 
 const updateActiveUser = (state=initialState, action) => {
 	switch (action.type) {
@@ -62,11 +83,16 @@ const updateActiveUser = (state=initialState, action) => {
 				...state,
 				loading: false,
 				error:true
-			}
-		case 'FETCH_POST_COMMENTS_SUCCESS':
+      }
+    case 'FETCH_POSTS_COMMENTS_REQUEST':
+      return {
+        ...state,
+				posts: postsLoading(state, action)
+      }
+		case 'FETCH_POSTS_COMMENTS_SUCCESS':
 			return {
 				...state,
-				posts: postsUpdate( state, action)
+				posts: postsSuccess(state, action)
 			}
 		case 'FETCH_POSTS_COMMENTS_ERROR':
 			return {

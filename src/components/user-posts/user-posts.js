@@ -7,6 +7,7 @@ import UserPost from './user-post';
 import PostComments from './post-comments';
 
 import {
+  postCommentsRequested,
 	postCommentsLoaded,
 	postCommentsFailed
 } from '../../actions';
@@ -15,7 +16,7 @@ import styles from './style.module.scss';
 class UserPosts extends Component {
 
 	render() {
-		const { name, posts, testService, postCommentsLoaded, postCommentsFailed } = this.props;
+		const { name, posts, testService, postsCommentsRequested, postCommentsLoaded, postCommentsFailed } = this.props;
 		const nameToView = name.split(' ')[0];
 
 		const fetchComments = (id) => {
@@ -27,6 +28,7 @@ class UserPosts extends Component {
 				return;
 			}
 			else {
+        postsCommentsRequested(id)
 				testService.getPostComments(id)
 					.then(comments => {
 						postCommentsLoaded(comments, id);
@@ -39,7 +41,7 @@ class UserPosts extends Component {
 
 		const postList = posts.map(post => {
 			return (
-				<UserPost post={post} key={post.id} onShowComments={fetchComments}>
+				<UserPost post={post} key={post.id} onShowComments={fetchComments} loading={post.loading}>
 					{
 						post.comments &&
 						<PostComments comments={post.comments} />
@@ -68,6 +70,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
+    postsCommentsRequested:(postId) => dispatch(postCommentsRequested(postId)),
 		postCommentsLoaded: (comments, postId) => dispatch(postCommentsLoaded(comments, postId)),
 		postCommentsFailed: () => dispatch(postCommentsFailed())
 	}

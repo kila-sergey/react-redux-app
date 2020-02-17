@@ -1,6 +1,13 @@
+const postCommentsRequested = (postId) => {
+  return {
+    type:'FETCH_POSTS_COMMENTS_REQUEST',
+    postId: postId
+  }
+}
+
 const postCommentsLoaded = (comments, postId) => {
 	return {
-		type: 'FETCH_POST_COMMENTS_SUCCESS',
+		type: 'FETCH_POSTS_COMMENTS_SUCCESS',
 		payload: comments,
 		postId: postId
 	}
@@ -13,6 +20,7 @@ const postCommentsFailed = () => {
 }
 
 export {
+  postCommentsRequested,
 	postCommentsLoaded,
-	postCommentsFailed
+  postCommentsFailed,
 }

@@ -30,6 +30,7 @@ import {
 
 
 import {
+  postCommentsRequested,
 	postCommentsLoaded,
 	postCommentsFailed
 } from './post-comments';
@@ -60,6 +61,7 @@ export {
 	albumPhotosLoaded,
 	albumPhotosFailed,
 
+  postCommentsRequested,
 	postCommentsLoaded,
 	postCommentsFailed,
 
