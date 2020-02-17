@@ -35,7 +35,7 @@ const postsSuccess = (state, action) => {
 	const postWithComments = {
 		...post,
     comments:action.payload,
-    // loading:false
+    loading:false
 	};
 	return [
 		...state.posts.slice(0, postIndex),
