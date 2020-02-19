@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 import usersList from './users-list';
 import activeUser from './active-user';
 import albumPhotos from './album-photos';

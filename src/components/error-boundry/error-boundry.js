@@ -19,7 +19,8 @@ export default class ErrorBoundry extends Component {
 
 		if (error) {
 			return <ErrorIndicator />
-		}
+    }
+    
 		return this.props.children
 	}
 }
