@@ -11,7 +11,7 @@ export default class TestService {
 	}
 
 	getAllUsers = async () => {
-		const response = await this.getResourse('/users/');
+		const response = await this.getResourse('/users');
 		return response;
 	}
 

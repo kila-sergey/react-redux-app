@@ -29,6 +29,7 @@ const userFetchSuccess = () =>{
 		type:'USER_PAGE_LOADED'
 	}
 }
+
 export {
 	userIdRequested,
 	userDataRequest,

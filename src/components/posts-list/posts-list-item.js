@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './styles.module.scss';
+import {Link} from 'react-router-dom';
+import {USERS_PAGE_PATH} from '../../constants/router-constants';
 
 const PostsListItem = ({ title, body, searchValue, userId }) => {
 
@@ -25,7 +27,9 @@ const PostsListItem = ({ title, body, searchValue, userId }) => {
   return (
     <li className={styles.post}>
       <div className={styles.postRow}>
-        <img className={styles.postIcon} src={`images/avatar-${userId}.png`} alt='post' />
+        <Link to={`${USERS_PAGE_PATH}/${userId}`}>
+          <img className={styles.postIcon} src={`images/avatar-${userId}.png`} alt='post' />
+        </Link>
         <h3 className={styles.postTitle}>{renderTitle(searchValue)}</h3>
       </div>
       <p className={styles.postBody}>{body}</p>
